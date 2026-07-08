@@ -37,6 +37,56 @@ $totalReports = 0;
 $pendingReports = 0;
 $underReviewReports = 0;
 $resolvedReports = 0;
+$totalUsers = 0;
+$totalFeedback = 0;
+
+$stmt = $conn->prepare('SELECT COUNT(*) AS total_reports FROM incident_reports');
+if ($stmt) {
+    $stmt->execute();
+    $stmt->bind_result($totalReports);
+    $stmt->fetch();
+    $stmt->close();
+}
+
+$stmt = $conn->prepare("SELECT COUNT(*) AS pending_reports FROM incident_reports WHERE status = 'Pending'");
+if ($stmt) {
+    $stmt->execute();
+    $stmt->bind_result($pendingReports);
+    $stmt->fetch();
+    $stmt->close();
+}
+
+$stmt = $conn->prepare("SELECT COUNT(*) AS under_review_reports FROM incident_reports WHERE status = 'Under Review'");
+if ($stmt) {
+    $stmt->execute();
+    $stmt->bind_result($underReviewReports);
+    $stmt->fetch();
+    $stmt->close();
+}
+
+$stmt = $conn->prepare("SELECT COUNT(*) AS resolved_reports FROM incident_reports WHERE status = 'Resolved'");
+if ($stmt) {
+    $stmt->execute();
+    $stmt->bind_result($resolvedReports);
+    $stmt->fetch();
+    $stmt->close();
+}
+
+$stmt = $conn->prepare('SELECT COUNT(*) AS total_users FROM users');
+if ($stmt) {
+    $stmt->execute();
+    $stmt->bind_result($totalUsers);
+    $stmt->fetch();
+    $stmt->close();
+}
+
+$stmt = $conn->prepare('SELECT COUNT(*) AS total_feedback FROM feedback');
+if ($stmt) {
+    $stmt->execute();
+    $stmt->bind_result($totalFeedback);
+    $stmt->fetch();
+    $stmt->close();
+}
 
 $stmt = $conn->prepare('SELECT ir.report_id, u.full_name, ir.category, ir.location, ir.incident_date, ir.emergency, ir.status, ir.created_at FROM incident_reports ir LEFT JOIN users u ON ir.user_id = u.id ORDER BY ir.created_at DESC');
 if ($stmt) {
@@ -46,17 +96,6 @@ if ($stmt) {
         $reports[] = $row;
     }
     $stmt->close();
-}
-
-foreach ($reports as $report) {
-    $totalReports++;
-    if (strcasecmp($report['status'], 'Pending') === 0) {
-        $pendingReports++;
-    } elseif (strcasecmp($report['status'], 'Under Review') === 0) {
-        $underReviewReports++;
-    } elseif (strcasecmp($report['status'], 'Resolved') === 0) {
-        $resolvedReports++;
-    }
 }
 ?>
 <!DOCTYPE html>
@@ -88,7 +127,7 @@ foreach ($reports as $report) {
                 <a class="nav-link" href="#"><i class="fa-solid fa-chart-line"></i><span>Reports & Analytics</span></a>
                 <a class="nav-link" href="#"><i class="fa-solid fa-gear"></i><span>System Settings</span></a>
                 <a class="nav-link" href="#"><i class="fa-solid fa-user"></i><span>Profile</span></a>
-                <a class="nav-link" href="login.html"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a>
+                <a class="nav-link" href="login.php"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a>
             </nav>
         </aside>
 
@@ -115,7 +154,7 @@ foreach ($reports as $report) {
                             <span>09138428622</span>
                         </div>
                     </div>
-                    <a href="login.html" class="button primary-button small">Logout</a>
+                    <a href="login.php" class="button primary-button small">Logout</a>
                 </div>
             </header>
 
@@ -127,33 +166,33 @@ foreach ($reports as $report) {
                 <section class="stats-grid" aria-label="Dashboard statistics">
                     <article class="card stat-card">
                         <div class="stat-icon blue"><i class="fa-solid fa-users"></i></div>
-                        <h3>1,248</h3>
+                        <h3><?php echo number_format($totalUsers); ?></h3>
                         <p>Total Registered Users</p>
                     </article>
                     <article class="card stat-card">
                         <div class="stat-icon sky"><i class="fa-solid fa-file-lines"></i></div>
-                        <h3><?php echo $totalReports; ?></h3>
-                        <p>Total Incident Reports</p>
+                        <h3><?php echo number_format($totalReports); ?></h3>
+                        <p>Total Reports</p>
                     </article>
                     <article class="card stat-card">
                         <div class="stat-icon amber"><i class="fa-solid fa-hourglass-half"></i></div>
-                        <h3><?php echo $pendingReports; ?></h3>
+                        <h3><?php echo number_format($pendingReports); ?></h3>
                         <p>Pending Reports</p>
                     </article>
                     <article class="card stat-card">
                         <div class="stat-icon gold"><i class="fa-solid fa-magnifying-glass"></i></div>
-                        <h3><?php echo $underReviewReports; ?></h3>
-                        <p>Reports Under Investigation</p>
+                        <h3><?php echo number_format($underReviewReports); ?></h3>
+                        <p>Under Review Reports</p>
                     </article>
                     <article class="card stat-card">
                         <div class="stat-icon green"><i class="fa-solid fa-check-circle"></i></div>
-                        <h3><?php echo $resolvedReports; ?></h3>
+                        <h3><?php echo number_format($resolvedReports); ?></h3>
                         <p>Resolved Reports</p>
                     </article>
                     <article class="card stat-card">
-                        <div class="stat-icon red"><i class="fa-solid fa-bell"></i></div>
-                        <h3>9</h3>
-                        <p>Emergency Alerts</p>
+                        <div class="stat-icon red"><i class="fa-solid fa-comments"></i></div>
+                        <h3><?php echo number_format($totalFeedback); ?></h3>
+                        <p>Total Feedback</p>
                     </article>
                 </section>
 

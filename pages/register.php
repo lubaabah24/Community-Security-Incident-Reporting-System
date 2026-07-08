@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
 
             <footer class="auth-footer">
-                <p>Already have an account? <a href="login.html">Login</a></p>
+                <p>Already have an account? <a href="login.php">Login</a></p>
                 <p>Ojo Local Government Area Security Incident Reporting System</p>
             </footer>
         </section>

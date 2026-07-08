@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <li class="nav-item"><a href="track.html">Track Reports</a></li>
                     <li class="nav-item"><a href="contact.html">Emergency Contacts</a></li>
                     <li class="nav-item"><a href="about.html">Profile</a></li>
-                    <li class="nav-item"><a href="login.html">Logout</a></li>
+                    <li class="nav-item"><a href="login.php">Logout</a></li>
                 </ul>
             </nav>
         </div>
