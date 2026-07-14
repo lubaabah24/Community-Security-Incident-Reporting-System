@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
 
             <footer class="auth-footer">
-                <p>Don't have an account? <a href="register.html">Register now</a></p>
+                <p>Don't have an account? <a href="register.php">Register now</a></p>
                 <p>Ojo Local Government Area Security Incident Reporting System</p>
             </footer>
         </section>

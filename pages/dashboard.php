@@ -79,10 +79,10 @@ foreach ($reports as $report) {
                 <div class="sidebar-card">
                     <h2><i class="fa-solid fa-bolt"></i> Quick Actions</h2>
                     <ul class="quick-actions">
-                        <li><a href="report.html"><i class="fa-solid fa-plus"></i> Report New Incident</a></li>
-                        <li><a href="track.html"><i class="fa-solid fa-magnifying-glass"></i> Track My Reports</a></li>
+                        <li><a href="report.php"><i class="fa-solid fa-plus"></i> Report New Incident</a></li>
+                        <li><a href="track.php"><i class="fa-solid fa-magnifying-glass"></i> Track My Reports</a></li>
                         <li><a href="contact.html"><i class="fa-solid fa-phone"></i> Emergency Contacts</a></li>
-                        <li><a href="feedback.html"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
+                        <li><a href="feedback.php"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
                         <li><a href="#"><i class="fa-solid fa-gear"></i> Settings</a></li>
                     </ul>
                 </div>
@@ -153,7 +153,7 @@ foreach ($reports as $report) {
                 <section class="card" aria-labelledby="reports-title">
                     <div class="section-heading">
                         <h2 id="reports-title"><i class="fa-solid fa-table-list"></i> Recent Ojo LGA Reports</h2>
-                        <a href="track.html" class="text-link">View all</a>
+                        <a href="track.php" class="text-link">View all</a>
                     </div>
 
                     <div class="table-wrapper">

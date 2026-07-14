@@ -36,9 +36,9 @@ if ($stmt) {
             <a href="../index.html" class="logo">Ojo LGA Security</a>
             <nav class="main-nav" aria-label="Primary navigation">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="dashboard.html">Dashboard</a></li>
-                    <li class="nav-item"><a href="report.html">Report Incident</a></li>
-                    <li class="nav-item"><a href="track.html" class="active-nav">Track Reports</a></li>
+                    <li class="nav-item"><a href="dashboard.php">Dashboard</a></li>
+                    <li class="nav-item"><a href="report.php">Report Incident</a></li>
+                    <li class="nav-item"><a href="track.php" class="active-nav">Track Reports</a></li>
                     <li class="nav-item"><a href="contact.html">Emergency Contacts</a></li>
                     <li class="nav-item"><a href="about.html">Profile</a></li>
                     <li class="nav-item"><a href="login.php">Logout</a></li>
