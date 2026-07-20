@@ -1,6 +1,6 @@
 ﻿<?php
 include_once '../config.php';
-
+session_start();
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -10,14 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
     $confirm_password = $_POST['confirm-password'] ?? '';
 
-    if ($full_name === '' || $email === '' || $phone === '' || $password === '' || $confirm_password === '') {
+    if ($full_name === '' || $phone === '' || $password === '' || $confirm_password === '') {
         $error = 'Please fill in all required fields.';
     } elseif ($password !== $confirm_password) {
         $error = 'Passwords do not match.';
     } else {
-        $checkStmt = $conn->prepare('SELECT id FROM users WHERE email = ? OR phone = ?');
-        if ($checkStmt) {
-            $checkStmt->bind_param('ss', $email, $phone);
+       $checkStmt = $conn->prepare('SELECT id FROM users WHERE phone = ? OR (email = ? AND email <> "")');
+if ($checkStmt) {
+    $checkStmt->bind_param('ss', $phone, $email);
             $checkStmt->execute();
             $checkStmt->store_result();
 
@@ -89,11 +89,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="full-name">Full name</label>
                     <input type="text" id="full-name" name="full-name" placeholder="Adewale Okafor" required>
                 </div>
-
-                <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" id="email" name="email" placeholder="resident@example.com" required>
-                </div>
+<div class="form-group">
+    <label for="email">Email address (Optional)</label>
+    <input type="email" id="email" name="email" placeholder="resident@example.com">
+</div>
 
                 <div class="form-group">
                     <label for="phone">Phone number</label>

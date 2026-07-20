@@ -87,20 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <h2 id="feedback-form-title"><i class="fa-solid fa-pen-to-square"></i> Submit Feedback</h2>
                 </div>
 
-                <div class="form-group">
-                    <label for="full-name">Full Name</label>
-                    <input type="text" id="full-name" name="full-name" placeholder="Jane Doe" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="feedback-email">Email Address</label>
-                    <input type="email" id="feedback-email" name="feedback-email" placeholder="you@example.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="report-id">Report ID (optional)</label>
-                    <input type="text" id="report-id" name="report-id" placeholder="e.g. IR-104">
-                </div>
 
                 <div class="form-group">
                     <label>How would you rate your experience?</label>

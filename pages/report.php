@@ -103,20 +103,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="form-error"><?php echo htmlspecialchars($error); ?></div>
                 <?php endif; ?>
                 <div class="report-form-grid">
-                    <div class="form-group">
-                        <label for="full-name">Full Name</label>
-                        <input type="text" id="full-name" name="full-name" placeholder="Jane Doe" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" inputmode="tel" placeholder="(123) 456-7890" required>
-                    </div>
+            
+<div class="form-info">
+    <p><strong>Logged in as:</strong> Your registered account information will automatically be attached to this report. You only need to provide the incident details.</p>
+</div>
 
                     <div class="form-group">
                         <label for="incident-category">Incident Category</label>

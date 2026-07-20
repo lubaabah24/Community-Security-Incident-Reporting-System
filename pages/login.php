@@ -1,6 +1,6 @@
 <?php
 include_once '../config.php';
-
+session_start();
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
