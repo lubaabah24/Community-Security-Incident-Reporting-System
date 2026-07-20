@@ -22,7 +22,7 @@ if ($checkStmt) {
             $checkStmt->store_result();
 
             if ($checkStmt->num_rows > 0) {
-                $error = 'Email or phone number already exists. Please use different credentials.';
+                $error = 'The phone number or email address is already registered.';
             }
             $checkStmt->close();
         } else {
